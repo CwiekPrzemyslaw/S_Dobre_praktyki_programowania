@@ -14,7 +14,7 @@ class TestPaymentProcessor(unittest.TestCase):
         """Test prawidłowego przetworzenia płatności."""
         self.payment_gateway.make_payment.return_value = TransactionResult(True, "12345", "Payment successful.")
         
-        result = self.processor.processPayment("user123", 100.0)
+        result = self.processor.processPayment("user123", "id", 100.0)
         
         self.assertTrue(result.success)
         self.assertEqual(result.transaction_id, "12345")
@@ -24,7 +24,7 @@ class TestPaymentProcessor(unittest.TestCase):
         """Test niepowodzenia płatności z powodu braku środków."""
         self.payment_gateway.make_payment.return_value = TransactionResult(False, "", "Insufficient funds.")
         
-        result = self.processor.processPayment("user123", 100.0)
+        result = self.processor.processPayment("user123", "id", 100.0)
         
         self.assertFalse(result.success)
         self.assertEqual(result.message, "Insufficient funds.")
@@ -33,21 +33,21 @@ class TestPaymentProcessor(unittest.TestCase):
         """Test obsługi wyjątku NetworkException."""
         self.payment_gateway.make_payment.side_effect = NetworkException("Network error.")
         
-        result = self.processor.processPayment("user123", 100.0)
+        result = self.processor.processPayment("user123", "id", 100.0)
         
         self.assertFalse(result.success)
         self.assertIn("Network error.", result.message)
 
     def test_process_payment_invalid_amount(self):
         """Test walidacji nieprawidłowych danych wejściowych (ujemna kwota)."""
-        result = self.processor.processPayment("user123", -50.0)
+        result = self.processor.processPayment("user123", "id", -50.0)
         
         self.assertFalse(result.success)
         self.assertEqual(result.message, "Amount must be positive.")
 
     def test_process_payment_empty_user_id(self):
         """Test walidacji pustego userId."""
-        result = self.processor.processPayment("", 100.0)
+        result = self.processor.processPayment("", "id", 100.0)
         
         self.assertFalse(result.success)
         self.assertEqual(result.message, "User ID cannot be empty.")

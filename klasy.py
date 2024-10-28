@@ -4,13 +4,13 @@ class PaymentProcessor:
     def __init__(self, payment_gateway):
         self.payment_gateway = payment_gateway
 
-    def processPayment(self, user_id, amount):
+    def processPayment(self, user_id, transaction_id, amount):
         if not user_id:
             print("Error: User ID cannot be empty.")
-            return TransactionResult(success=False, message="User ID cannot be empty.")
+            return TransactionResult(success=False, transaction_id=transaction_id, message="User ID cannot be empty.")
         if amount <= 0:
             print("Error: Amount must be positive.")
-            return TransactionResult(success=False, message="Amount must be positive.")
+            return TransactionResult(success=False, transaction_id=transaction_id, message="Amount must be positive.")
 
         try:
             result = self.payment_gateway.make_payment(user_id, amount)
@@ -21,7 +21,7 @@ class PaymentProcessor:
             return result
         except Exception as e:
             print(f"An error occurred while processing payment: {str(e)}")
-            return TransactionResult(success=False, message=str(e))
+            return TransactionResult(success=False,transaction_id = transaction_id, message=str(e))
 
     def refundPayment(self, transaction_id):
         if not transaction_id:
