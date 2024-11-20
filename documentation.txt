@@ -1,0 +1,33 @@
+singleton.py
+This file implements the Singleton pattern through the LibraryCatalog class, which ensures a single instance of the book catalog throughout the system. 
+It manages adding, removing, and iterating over books and integrates a notification system for observers.
+
+adapter.py
+This file implements the Adapter pattern via the BookAdapter class, 
+enabling the conversion of book data from various formats (JSON, CSV, XML) into a unified format used by the system. 
+The adapter facilitates importing data from external sources.
+
+factory.py
+This file defines the Factory pattern via the UserFactory class, 
+which creates different types of users (Student, Teacher, Librarian) with specific permissions. 
+Permissions are stored in a structured format, allowing easy validation for borrowing limits and other operations.
+
+observer.py
+This file contains the implementation of the Observer pattern, 
+allowing notifications to be sent to registered users (observers) about catalog updates, 
+such as adding new books, borrowing, or returning books. The UserObserver class represents a user as an observer receiving these notifications.
+
+facade.py
+This file implements the Facade pattern through the LibraryInterface class, 
+which simplifies interactions with the library system. 
+It provides functionalities for user registration, book management (adding, borrowing, returning), 
+and listing users and books. It integrates subsystems like the catalog, user factory, and notifications.
+
+iterator.py
+This file implements the Iterator pattern with the BookIterator and UserIterator classes, 
+allowing structured iteration over collections of books and users in the system. These iterators are used for organized data traversal.
+
+test_library_system.py
+This test script demonstrates the functionality of all design patterns in the library system. 
+It showcases practical use cases for managing books, registering users, sending notifications, 
+iterating over collections, and validating borrowing limits.
