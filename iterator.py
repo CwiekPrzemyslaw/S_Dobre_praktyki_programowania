@@ -36,3 +36,4 @@ class UserIterator:
             return result
         else:
             raise StopIteration
+        
