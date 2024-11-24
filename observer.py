@@ -1,6 +1,6 @@
 class Observer:
     """
-    Base class for observers. Observers will implement the `update` method.
+    Base class for observers.
     """
     def update(self, message):
         raise NotImplementedError("Subclasses must implement the update method.")

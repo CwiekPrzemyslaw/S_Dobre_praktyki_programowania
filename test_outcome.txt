@@ -1,0 +1,47 @@
+=== Singleton Test ===
+Current books in catalog: ['Book A', 'Book B']
+
+=== Adapter Test ===
+Books after importing from various formats: ['Book A', 'Book B', 'Book C', 'Book D', 'Book E']
+
+=== Factory Test ===
+Alice (Student): {'max_books': 3, 'can_manage_library': False}
+Bob (Teacher): {'max_books': 10, 'can_manage_library': False}
+Clara (Librarian): {'max_books': inf, 'can_manage_library': True}
+
+=== Observer Test ===
+Notification for Alice: Book 'Book F' has been added to the catalog.
+Notification for Bob: Book 'Book F' has been added to the catalog.
+Notification for Alice: Book 'Book A' has been borrowed.
+Notification for Bob: Book 'Book A' has been borrowed.
+Notification for Alice: Book 'Book A' has been returned to the catalog.
+Notification for Bob: Book 'Book A' has been returned to the catalog.
+
+=== Facade Test ===
+User 'John' of type 'Student' registered successfully.
+Book 'Book G' added to the library.
+Book 'Book H' added to the library.
+Book 'Book I' added to the library.
+Book 'Book J' added to the library.
+User 'John' borrowed the book 'Book G'.
+User 'John' borrowed the book 'Book H'.
+User 'John' borrowed the book 'Book I'.
+User 'John' cannot borrow more books. Limit: 3.
+User 'John' returned the book 'Book H'.
+User 'John' borrowed the book 'Book J'.
+Books in the library:
+- Book H
+Registered users:
+- John (Student)
+
+=== Iterator Test ===
+Iterating through books:
+- Book B
+- Book C
+- Book D
+- Book E
+- Book F
+- Book A
+
+Iterating through users:
+- John (Student)

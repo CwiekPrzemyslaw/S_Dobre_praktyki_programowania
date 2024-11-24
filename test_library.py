@@ -8,6 +8,7 @@ def test_library_system():
     catalog = LibraryCatalog()  
     catalog.add_book("Book A")
     catalog.add_book("Book B")
+
     print("Current books in catalog:", catalog.get_books())
     print()
 
