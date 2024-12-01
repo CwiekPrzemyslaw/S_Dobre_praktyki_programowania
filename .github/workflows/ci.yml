@@ -35,12 +35,6 @@ jobs:
         coverage run -m unittest discover
         coverage report
 
-    - name: Upload coverage report
-      uses: actions/upload-artifact@v3
-      with:
-        name: coverage-report
-        path: coverage_html_report/
-
     - name: Run Super-Linter
       uses: github/super-linter@v5
       env:
